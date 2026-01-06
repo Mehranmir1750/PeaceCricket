@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peace Cricket - Performance</title>
+  <style>
+
+    body{
+        background-color: #1A1F1E;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .navbar{
+        background-color: #36454F;
+        padding: 15px 20px;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 20px;
+    }
+  
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .navbar img{
+        height: 70px;
+        width: 70px;
+    }
+
+    .navbar h1{
+        color: #FFFFFF;
+        margin: 0;
+        font-size: 28px;
+    }
+
+    .nav-links {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 20px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-links a{
+        color: black;
+        text-decoration: none;
+    }
+
+    .nav-btn{
+        padding: 10px 20px;
+        border: 1px solid #1A1F1E;
+        border-radius: 12px;
+        color: black;
+        background-color: #C7F000;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover {
+        background-color: #EBD5AB;
+        color: #1A1F1E;
+    }
+
+    .bg {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(-45deg, #FFFFFF, #1A1F1E, #1A1F1E, #FFFFFF);
+        background-size: 400% 400%;
+        animation: gradientMove 15s ease infinite;
+        z-index: -1;
+    }
+
+    @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .footer {
+        background-color: #36454F;
+        color: #ccc;
+        padding: 20px;
+        margin-top: 60px;
+    }
+
+    .footer-content {
+        text-align: center;
+    }
+
+    .footer p {
+        margin: 0;
+        font-size: 16px;
+    }
+
+    .photos {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .photos h1{
+        color: #C7F000;
+        font-size: 42px;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .photos h3{
+        color: #FFFFFF;
+        font-size: 28px;
+        text-align: center;
+        margin: 40px 0 20px 0;
+    }
+
+    .photos img{
+        width: 100%;
+        max-width: 768px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(199, 240, 0, 0.2);
+    }
+
+    .stats2 {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px 40px 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .stats2 img{
+        width: 100%;
+        max-width: 768px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(199, 240, 0, 0.2);
+    }
+
+    /* MOBILE RESPONSIVE STYLES */
+    @media screen and (max-width: 768px) {
+        .navbar {
+            grid-template-columns: 1fr;
+            gap: 15px;
+            padding: 15px;
+        }
+
+        .navbar-brand {
+            justify-content: center;
+        }
+
+        .navbar img {
+            height: 50px;
+            width: 50px;
+        }
+
+        .navbar h1 {
+            font-size: 22px;
+        }
+
+        .nav-links {
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 8px 15px;
+            font-size: 13px;
+        }
+
+        .photos {
+            padding: 30px 15px;
+        }
+
+        .photos h1 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .photos h3 {
+            font-size: 24px;
+            margin: 30px 0 15px 0;
+        }
+
+        .photos img,
+        .stats2 img {
+            border-radius: 8px;
+        }
+
+        .stats2 {
+            padding: 0 15px 30px 15px;
+        }
+
+        .footer {
+            padding: 15px;
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 13px;
+        }
+    }
+
+    /* EXTRA SMALL MOBILE */
+    @media screen and (max-width: 480px) {
+        .navbar h1 {
+            font-size: 18px;
+        }
+
+        .navbar img {
+            height: 40px;
+            width: 40px;
+        }
+
+        .photos h1 {
+            font-size: 26px;
+        }
+
+        .photos h3 {
+            font-size: 20px;
+            margin: 25px 0 12px 0;
+        }
+
+        .nav-btn {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        .photos {
+            padding: 20px 10px;
+        }
+
+        .stats2 {
+            padding: 0 10px 20px 10px;
+        }
+    }
+
+  </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="navbar-brand">
+            <img src="logo.png" alt="Peace 11 Logo">
+            <h1>Peace 11</h1>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-btn">Home</a></li>
+            <li><a href="players.html" class="nav-btn">Players</a></li>
+            <li><a href="performance.html" class="nav-btn">Performance</a></li>
+        </ul>
+    </div>
+
+    <div class="bg"></div>
+
+    <div class="photos">
+        <h1>Performances</h1>
+        <h3>2025</h3>
+        <img src="stats.png" alt="2025 Statistics">
+        <h3>2026</h3>
+    </div>
+
+    <div class="stats2">
+        <img src="stats 2.png" alt="2026 Statistics">
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2026 Peace 11 • Peace Ground</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

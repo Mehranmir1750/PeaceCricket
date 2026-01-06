@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peace Cricket - Players</title>
+  <style>
+
+    body{
+        background-color: #1A1F1E;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .navbar{
+        background-color: #36454F;
+        padding: 15px 20px;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 20px;
+    }
+  
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .navbar img{
+        height: 60px;
+        width: 60px;
+    }
+
+    .navbar h1{
+        color: #FFFFFF;
+        margin: 0;
+        font-size: 24px;
+    }
+
+    .nav-links {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 20px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-links a{
+        color: black;
+        padding: 10px 20px;
+        text-decoration: none;
+    }
+
+    .nav-btn{
+        padding: 10px 20px;
+        border: 1px solid #1A1F1E;
+        border-radius: 12px;
+        color: black;
+        background-color: #C7F000;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+    }
+
+    .nav-btn:hover {
+        background-color: #EBD5AB;
+        color: #1A1F1E;
+    }
+
+    .bg {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(-45deg, #FFFFFF, #1A1F1E, #1A1F1E, #FFFFFF);
+        background-size: 400% 400%;
+        animation: gradientMove 15s ease infinite;
+        z-index: -1;
+    }
+
+    @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .footer {
+        background-color: #36454F;
+        color: #ccc;
+        padding: 20px;
+        margin-top: 40px;
+    }
+
+    .footer-content {
+        text-align: center;
+    }
+
+    .footer p {
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .batters-section {
+        padding: 40px 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .section-title {
+        color: #C7F000;
+        font-size: 32px;
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
+    .section-subtitle {
+        color: #FFFFFF;
+        font-size: 18px;
+        text-align: left;
+        margin-bottom: 40px;
+        font-weight: normal;
+        line-height: 1.8;
+    }
+
+    .batters-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        padding: 20px 0;
+    }
+
+    .batter-card {
+        background: rgba(54, 69, 79, 0.6);
+        border-radius: 12px;
+        padding: 25px;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(199, 240, 0, 0.2);
+    }
+
+    .batter-card:hover {
+        transform: translateY(-5px);
+        background: rgba(54, 69, 79, 0.8);
+        border-color: #C7F000;
+    }
+
+    .batter-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .batter-name {
+        color: #FFFFFF;
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    .batter-number {
+        background: #C7F000;
+        color: #1A1F1E;
+        font-weight: bold;
+        font-size: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .batter-role {
+        color: #C7F000;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+    }
+
+    .batter-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .stat-box {
+        background: rgba(199, 240, 0, 0.1);
+        padding: 12px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .stat-label {
+        color: #999;
+        font-size: 11px;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+    }
+
+    .stat-value {
+        color: #FFFFFF;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .specialty {
+        color: #FFFFFF;
+        font-size: 14px;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(199, 240, 0, 0.2);
+        line-height: 1.6;
+    }
+
+    /* MOBILE RESPONSIVE STYLES */
+    @media screen and (max-width: 768px) {
+        .navbar {
+            grid-template-columns: 1fr;
+            gap: 15px;
+            padding: 15px;
+        }
+
+        .navbar-brand {
+            justify-content: center;
+        }
+
+        .navbar img {
+            height: 50px;
+            width: 50px;
+        }
+
+        .navbar h1 {
+            font-size: 20px;
+        }
+
+        .nav-links {
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 8px 15px;
+            font-size: 13px;
+        }
+
+        .batters-section {
+            padding: 30px 15px;
+        }
+
+        .section-title {
+            font-size: 24px;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .batters-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .batter-card {
+            padding: 20px;
+        }
+
+        .batter-name {
+            font-size: 20px;
+        }
+
+        .batter-number {
+            width: 35px;
+            height: 35px;
+            font-size: 18px;
+        }
+
+        .batter-role {
+            font-size: 12px;
+        }
+
+        .stat-box {
+            padding: 10px;
+        }
+
+        .stat-label {
+            font-size: 10px;
+        }
+
+        .stat-value {
+            font-size: 18px;
+        }
+
+        .specialty {
+            font-size: 13px;
+        }
+
+        .footer {
+            padding: 15px;
+        }
+
+        .footer p {
+            font-size: 12px;
+        }
+    }
+
+    /* EXTRA SMALL MOBILE */
+    @media screen and (max-width: 480px) {
+        .navbar h1 {
+            font-size: 18px;
+        }
+
+        .section-title {
+            font-size: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+        }
+
+        .batter-name {
+            font-size: 18px;
+        }
+
+        .batter-stats {
+            gap: 10px;
+        }
+
+        .stat-value {
+            font-size: 16px;
+        }
+
+        .specialty {
+            font-size: 12px;
+        }
+
+        .nav-btn {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+    }
+
+  </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="navbar-brand">
+            <img src="logo.png" alt="Peace 11 Logo">
+            <h1>Peace 11</h1>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-btn">Home</a></li>
+            <li><a href="players.html" class="nav-btn">Players</a></li>
+            <li><a href="performance.html" class="nav-btn">Performance</a></li>
+        </ul>
+    </div>
+
+    <div class="bg"></div>
+
+    <div class="batters-section">
+        <h1 class="section-title">Peace 11 Squad</h1>
+        <p class="section-subtitle">The backbone of Peace 11.<br>
+        Seven players. One ground. Endless determination.</p>
+
+        <div class="batters-grid">
+          
+            <!-- Batter Card 1 -->
+            <div class="batter-card">
+                <div class="batter-header">
+                    <h2 class="batter-name">Zaid Mir</h2>
+                    <div class="batter-number">1</div>
+                </div>
+                <div class="batter-role">Opening Batsman</div>
+                <div class="batter-stats">
+                    <div class="stat-box">
+                        <div class="stat-label">Matches</div>
+                        <div class="stat-value">24</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Runs</div>
+                        <div class="stat-value">486</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Avg</div>
+                        <div class="stat-value">12.2</div>
+                    </div>
+                </div>
+                <div class="specialty">Key focus of the season's campaign. Under spotlight as expectations rise.</div>
+            </div>
+
+            <!-- Batter Card 2 -->
+            <div class="batter-card">
+                <div class="batter-header">
+                    <h2 class="batter-name">Athar</h2>
+                    <div class="batter-number">2</div>
+                </div>
+                <div class="batter-role">Opening Batsman</div>
+                <div class="batter-stats">
+                    <div class="stat-box">
+                        <div class="stat-label">Matches</div>
+                        <div class="stat-value">28</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Runs</div>
+                        <div class="stat-value">443</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Avg</div>
+                        <div class="stat-value">13.9</div>
+                    </div>
+                </div>
+                <div class="specialty">Showing steady improvement day by day.</div>
+            </div>
+
+            <!-- Batter Card 3 -->
+            <div class="batter-card">
+                <div class="batter-header">
+                    <h2 class="batter-name">Umar</h2>
+                    <div class="batter-number">3</div>
+                </div>
+                <div class="batter-role">Middle Order Anchor</div>
+                <div class="batter-stats">
+                    <div class="stat-box">
+                        <div class="stat-label">Matches</div>
+                        <div class="stat-value">19</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Runs</div>
+                        <div class="stat-value">301</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Avg</div>
+                        <div class="stat-value">10.5</div>
+                    </div>
+                </div>
+                <div class="specialty">Masters strike rotation and anchors innings.</div>
+            </div>
+
+            <!-- Batter Card 4 -->
+            <div class="batter-card">
+                <div class="batter-header">
+                    <h2 class="batter-name">Iman</h2>
+                    <div class="batter-number">4</div>
+                </div>
+                <div class="batter-role">Power Hitter</div>
+                <div class="batter-stats">
+                    <div class="stat-box">
+                        <div class="stat-label">Matches</div>
+                        <div class="stat-value">24</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Runs</div>
+                        <div class="stat-value">278</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Avg</div>
+                        <div class="stat-value">9.0</div>
+                    </div>
+                </div>
+                <div class="specialty">Explosive hitting power in crucial moments.</div>
+            </div>
+
+            <!-- Batter Card 5 -->
+            <div class="batter-card">
+                <div class="batter-header">
+                    <h2 class="batter-name">Manan Mir</h2>
+                    <div class="batter-number">5</div>
+                </div>
+                <div class="batter-role">All-Rounder</div>
+                <div class="batter-stats">
+                    <div class="stat-box">
+                        <div class="stat-label">Matches</div>
+                        <div class="stat-value">29</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Runs</div>
+                        <div class="stat-value">233</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Avg</div>
+                        <div class="stat-value">9.7</div>
+                    </div>
+                </div>
+                <div class="specialty">Under spotlight as expectations rise.</div>
+            </div>
+
+            <!-- Batter Card 6 -->
+            <div class="batter-card">
+                <div class="batter-header">
+                    <h2 class="batter-name">Mehran Mir</h2>
+                    <div class="batter-number">6</div>
+                </div>
+                <div class="batter-role">Power Hitter</div>
+                <div class="batter-stats">
+                    <div class="stat-box">
+                        <div class="stat-label">Matches</div>
+                        <div class="stat-value">28</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Runs</div>
+                        <div class="stat-value">250</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Avg</div>
+                        <div class="stat-value">11.0</div>
+                    </div>
+                </div>
+                <div class="specialty">Explosive hitting when it matters, and the only member of the side with the ability to generate a genuine banana swing.</div>
+            </div>
+
+            <!-- Batter Card 7 -->
+            <div class="batter-card">
+                <div class="batter-header">
+                    <h2 class="batter-name">Aasim</h2>
+                    <div class="batter-number">7</div>
+                </div>
+                <div class="batter-role">All-Rounder</div>
+                <div class="batter-stats">
+                    <div class="stat-box">
+                        <div class="stat-label">Matches</div>
+                        <div class="stat-value">15</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Runs</div>
+                        <div class="stat-value">245</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Avg</div>
+                        <div class="stat-value">16.3</div>
+                    </div>
+                </div>
+                <div class="specialty">A+ contract despite irregular appearances.</div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2026 Peace 11 • Peace Ground</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
