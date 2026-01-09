@@ -6,288 +6,685 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Peace Cricket - Performance</title>
   <style>
-
-    body{
-        background-color: #1A1F1E;
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .navbar{
-        background-color: #36454F;
-        padding: 15px 20px;
-        display: grid;
-        grid-template-columns: auto 1fr;
-        align-items: center;
-        gap: 20px;
+    body {
+      background-color: #0a0e0d;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
     }
-  
+
+    /* Animated Particles Background */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: #C7F000;
+      border-radius: 50%;
+      opacity: 0;
+      animation: float 15s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(100vh) translateX(0) scale(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.5;
+      }
+      50% {
+        opacity: 0.8;
+        transform: translateY(50vh) translateX(100px) scale(1);
+      }
+      90% {
+        opacity: 0.3;
+      }
+    }
+
+    /* Navbar with slide-in animation */
+    .navbar {
+      background: linear-gradient(135deg, #36454F 0%, #2a3439 100%);
+      padding: 15px 40px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(199, 240, 0, 0.2);
+      animation: slideDown 0.8s ease-out;
+      backdrop-filter: blur(10px);
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
     .navbar-brand {
-        display: flex;
-        align-items: center;
-        gap: 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      animation: fadeInLeft 1s ease-out 0.3s both;
     }
 
-    .navbar img{
-        height: 70px;
-        width: 70px;
+    @keyframes fadeInLeft {
+      from {
+        transform: translateX(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
     }
 
-    .navbar h1{
-        color: #FFFFFF;
-        margin: 0;
-        font-size: 28px;
+    .navbar img {
+      height: 70px;
+      width: 70px;
+      border-radius: 50%;
+      border: 3px solid #C7F000;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 10px rgba(199, 240, 0, 0.5);
+    }
+
+    .navbar img:hover {
+      transform: scale(1.1);
+    }
+
+    .navbar h1 {
+      color: #FFFFFF;
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      letter-spacing: 1px;
     }
 
     .nav-links {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        gap: 20px;
-        list-style: none;
-        margin: 0;
-        padding: 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
     }
 
-    .nav-links a{
-        color: black;
-        text-decoration: none;
+    .nav-links li {
+      animation: fadeInRight 1s ease-out both;
     }
 
-    .nav-btn{
-        padding: 10px 20px;
-        border: 1px solid #1A1F1E;
-        border-radius: 12px;
-        color: black;
-        background-color: #C7F000;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 14px;
-        transition: all 0.3s ease;
+    .nav-links li:nth-child(1) { animation-delay: 0.4s; }
+    .nav-links li:nth-child(2) { animation-delay: 0.5s; }
+    .nav-links li:nth-child(3) { animation-delay: 0.6s; }
+
+    @keyframes fadeInRight {
+      from {
+        transform: translateX(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .nav-btn {
+      padding: 12px 24px;
+      border: 2px solid #C7F000;
+      border-radius: 30px;
+      color: #1A1F1E;
+      background: linear-gradient(135deg, #C7F000 0%, #a8cc00 100%);
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .nav-btn:hover::before {
+      width: 300px;
+      height: 300px;
     }
 
     .nav-btn:hover {
-        background-color: #EBD5AB;
-        color: #1A1F1E;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(199, 240, 0, 0.4);
+      background: linear-gradient(135deg, #d4ff00 0%, #C7F000 100%);
     }
 
+    /* Animated gradient background */
     .bg {
-        position: fixed;
-        inset: 0;
-        background: linear-gradient(-45deg, #FFFFFF, #1A1F1E, #1A1F1E, #FFFFFF);
-        background-size: 400% 400%;
-        animation: gradientMove 15s ease infinite;
-        z-index: -1;
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(-45deg, #0a0e0d, #1A1F1E, #15211c, #0f1512);
+      background-size: 400% 400%;
+      animation: gradientMove 15s ease infinite;
+      z-index: -2;
     }
 
     @keyframes gradientMove {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-
-    .footer {
-        background-color: #36454F;
-        color: #ccc;
-        padding: 20px;
-        margin-top: 60px;
-    }
-
-    .footer-content {
-        text-align: center;
-    }
-
-    .footer p {
-        margin: 0;
-        font-size: 16px;
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .photos {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 40px 20px;
-        position: relative;
-        z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 40px;
+      position: relative;
+      z-index: 1;
     }
 
-    .photos h1{
-        color: #C7F000;
-        font-size: 42px;
-        text-align: center;
-        margin-bottom: 40px;
+    .photos h1 {
+      color: #C7F000;
+      font-size: 48px;
+      text-align: center;
+      margin-bottom: 50px;
+      font-weight: 800;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+      animation: titleGlow 3s ease-in-out infinite, fadeInUp 1.2s ease-out;
+      letter-spacing: 2px;
     }
 
-    .photos h3{
-        color: #FFFFFF;
-        font-size: 28px;
-        text-align: center;
-        margin: 40px 0 20px 0;
+    @keyframes titleGlow {
+      0%, 100% {
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7), 0 0 20px rgba(199, 240, 0, 0.3);
+      }
+      50% {
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7), 0 0 40px rgba(199, 240, 0, 0.6);
+      }
     }
 
-    .photos img{
-        width: 100%;
-        max-width: 768px;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(199, 240, 0, 0.2);
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .photos h3 {
+      color: #FFFFFF;
+      font-size: 32px;
+      text-align: center;
+      margin: 50px 0 30px 0;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      animation: fadeInUp 1s ease-out both;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .photos h3::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #C7F000, transparent);
+      animation: lineGrow 1s ease-out 0.5s both;
+    }
+
+    @keyframes lineGrow {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100px;
+      }
+    }
+
+    .image-container {
+      position: relative;
+      max-width: 768px;
+      margin: 0 auto;
+      animation: imageSlideIn 1s ease-out both;
+    }
+
+    .photos .image-container:nth-of-type(1) {
+      animation-delay: 0.3s;
+    }
+
+    .photos .image-container:nth-of-type(2) {
+      animation-delay: 0.5s;
+    }
+
+    @keyframes imageSlideIn {
+      from {
+        transform: scale(0.9) translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .photos img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(199, 240, 0, 0.3);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 2px solid rgba(199, 240, 0, 0.3);
+    }
+
+    .photos img:hover {
+      transform: scale(1.02) translateY(-10px);
+      box-shadow: 0 20px 50px rgba(199, 240, 0, 0.5);
+      border-color: #C7F000;
     }
 
     .stats2 {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px 40px 20px;
-        position: relative;
-        z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px 60px 40px;
+      position: relative;
+      z-index: 1;
     }
 
-    .stats2 img{
-        width: 100%;
-        max-width: 768px;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(199, 240, 0, 0.2);
+    .stats2 .image-container {
+      animation-delay: 0.7s;
+    }
+
+    .stats2 img {
+      width: 100%;
+      max-width: 768px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(199, 240, 0, 0.3);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 2px solid rgba(199, 240, 0, 0.3);
+    }
+
+    .stats2 img:hover {
+      transform: scale(1.02) translateY(-10px);
+      box-shadow: 0 20px 50px rgba(199, 240, 0, 0.5);
+      border-color: #C7F000;
+    }
+
+    /* Year badge animation */
+    .year-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #C7F000 0%, #a8cc00 100%);
+      color: #1A1F1E;
+      padding: 10px 30px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 24px;
+      margin: 40px auto 30px;
+      box-shadow: 0 4px 15px rgba(199, 240, 0, 0.4);
+      animation: badgeBounce 2s ease-in-out infinite;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @keyframes badgeBounce {
+      0%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      50% {
+        transform: translateX(-50%) translateY(-5px);
+      }
+    }
+
+    /* Decorative elements */
+    .stats-divider {
+      width: 200px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #C7F000, transparent);
+      margin: 50px auto;
+      animation: dividerGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes dividerGlow {
+      0%, 100% {
+        opacity: 0.5;
+        box-shadow: 0 0 10px rgba(199, 240, 0, 0.3);
+      }
+      50% {
+        opacity: 1;
+        box-shadow: 0 0 20px rgba(199, 240, 0, 0.8);
+      }
+    }
+
+    /* Footer with slide-up animation */
+    .footer {
+      background: linear-gradient(135deg, #36454F 0%, #2a3439 100%);
+      color: #ccc;
+      padding: 30px 20px;
+      margin-top: 60px;
+      border-top: 3px solid #C7F000;
+      animation: slideUp 1s ease-out;
+      box-shadow: 0 -4px 20px rgba(199, 240, 0, 0.2);
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .footer-content {
+      text-align: center;
+      animation: fadeIn 1.5s ease-out 0.5s both;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .footer p {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    /* Floating cricket ball decoration */
+    .cricket-ball-float {
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      background: radial-gradient(circle at 30% 30%, #ff6b6b, #c92a2a);
+      border-radius: 50%;
+      bottom: 100px;
+      right: 50px;
+      animation: floatBall 4s ease-in-out infinite;
+      box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+      z-index: 10;
+    }
+
+    @keyframes floatBall {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-30px) rotate(180deg);
+      }
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-arrow {
+      width: 30px;
+      height: 30px;
+      border-left: 3px solid #C7F000;
+      border-bottom: 3px solid #C7F000;
+      transform: rotate(-45deg);
+      animation: arrowPulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      40% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+      60% {
+        transform: translateX(-50%) translateY(-5px);
+      }
+    }
+
+    @keyframes arrowPulse {
+      0%, 100% {
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 1;
+      }
     }
 
     /* MOBILE RESPONSIVE STYLES */
     @media screen and (max-width: 768px) {
-        .navbar {
-            grid-template-columns: 1fr;
-            gap: 15px;
-            padding: 15px;
-        }
+      .navbar {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 15px 20px;
+      }
 
-        .navbar-brand {
-            justify-content: center;
-        }
+      .navbar-brand {
+        justify-content: center;
+      }
 
-        .navbar img {
-            height: 50px;
-            width: 50px;
-        }
+      .navbar img {
+        height: 50px;
+        width: 50px;
+      }
 
-        .navbar h1 {
-            font-size: 22px;
-        }
+      .navbar h1 {
+        font-size: 22px;
+      }
 
-        .nav-links {
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
+      .nav-links {
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
 
-        .nav-btn {
-            padding: 8px 15px;
-            font-size: 13px;
-        }
+      .nav-btn {
+        padding: 10px 18px;
+        font-size: 13px;
+      }
 
-        .photos {
-            padding: 30px 15px;
-        }
+      .photos {
+        padding: 40px 20px;
+      }
 
-        .photos h1 {
-            font-size: 32px;
-            margin-bottom: 30px;
-        }
+      .photos h1 {
+        font-size: 36px;
+        margin-bottom: 40px;
+      }
 
-        .photos h3 {
-            font-size: 24px;
-            margin: 30px 0 15px 0;
-        }
+      .photos h3 {
+        font-size: 28px;
+        margin: 40px 0 25px 0;
+      }
 
-        .photos img,
-        .stats2 img {
-            border-radius: 8px;
-        }
+      .year-badge {
+        font-size: 20px;
+        padding: 8px 25px;
+      }
 
-        .stats2 {
-            padding: 0 15px 30px 15px;
-        }
+      .stats2 {
+        padding: 0 20px 40px 20px;
+      }
 
-        .footer {
-            padding: 15px;
-            margin-top: 40px;
-        }
+      .footer {
+        padding: 20px 15px;
+        margin-top: 40px;
+      }
 
-        .footer p {
-            font-size: 13px;
-        }
+      .footer p {
+        font-size: 14px;
+      }
+
+      .cricket-ball-float {
+        width: 30px;
+        height: 30px;
+        bottom: 80px;
+        right: 30px;
+      }
     }
 
-    /* EXTRA SMALL MOBILE */
     @media screen and (max-width: 480px) {
-        .navbar h1 {
-            font-size: 18px;
-        }
+      .navbar h1 {
+        font-size: 20px;
+      }
 
-        .navbar img {
-            height: 40px;
-            width: 40px;
-        }
+      .navbar img {
+        height: 40px;
+        width: 40px;
+      }
 
-        .photos h1 {
-            font-size: 26px;
-        }
+      .photos h1 {
+        font-size: 28px;
+      }
 
-        .photos h3 {
-            font-size: 20px;
-            margin: 25px 0 12px 0;
-        }
+      .photos h3 {
+        font-size: 24px;
+        margin: 30px 0 20px 0;
+      }
 
-        .nav-btn {
-            padding: 6px 12px;
-            font-size: 12px;
-        }
+      .year-badge {
+        font-size: 18px;
+        padding: 6px 20px;
+      }
 
-        .photos {
-            padding: 20px 10px;
-        }
+      .nav-btn {
+        padding: 8px 15px;
+        font-size: 12px;
+      }
 
-        .stats2 {
-            padding: 0 10px 20px 10px;
-        }
+      .photos {
+        padding: 30px 15px;
+      }
+
+      .stats2 {
+        padding: 0 15px 30px 15px;
+      }
     }
 
   </style>
 </head>
 
 <body>
+  <!-- Animated particles background -->
+  <div class="particles" id="particles"></div>
 
-    <div class="navbar">
-        <div class="navbar-brand">
-            <img src="logo.png" alt="Peace 11 Logo">
-            <h1>Peace 11</h1>
-        </div>
-
-        <ul class="nav-links">
-            <li><a href="index.html" class="nav-btn">Home</a></li>
-            <li><a href="players.html" class="nav-btn">Players</a></li>
-            <li><a href="performance.html" class="nav-btn">Performance</a></li>
-        </ul>
+  <div class="navbar">
+    <div class="navbar-brand">
+      <img src="logo.png" alt="Peace 11 Logo">
+      <h1>Peace 11</h1>
     </div>
 
-    <div class="bg"></div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-btn">Home</a></li>
+      <li><a href="players.html" class="nav-btn">Players</a></li>
+      <li><a href="performance.html" class="nav-btn">Performance</a></li>
+    </ul>
+  </div>
 
-    <div class="photos">
-        <h1>Performances</h1>
-        <h3>2025</h3>
-        <img src="stats.png" alt="2025 Statistics">
-        <h3>2026</h3>
+  <div class="bg"></div>
+
+  <div class="photos">
+    <h1>Performances</h1>
+    
+    <div class="stats-divider"></div>
+    
+    <h3>2025</h3>
+    <div class="image-container">
+      <img src="stats.png" alt="2025 Statistics">
     </div>
+    
+    <div class="stats-divider"></div>
+    
+    <h3>2026</h3>
+  </div>
 
-    <div class="stats2">
-        <img src="stats 2.png" alt="2026 Statistics">
+  <div class="stats2">
+    <div class="image-container">
+      <img src="stats 2.png" alt="2026 Statistics">
     </div>
+  </div>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <p>© 2026 Peace 11 • Peace Ground</p>
-        </div>
-    </footer>
+  <!-- Floating cricket ball decoration -->
+  <div class="cricket-ball-float"></div>
 
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-arrow"></div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>© 2026 Peace 11 • Peace Ground</p>
+    </div>
+  </footer>
+
+  <script>
+    // Create animated particles
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 15 + 's';
+      particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+      particlesContainer.appendChild(particle);
+    }
+  </script>
 </body>
 
 </html>
