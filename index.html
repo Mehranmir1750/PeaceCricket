@@ -1,348 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Peace Cricket</title>
+  <title>Peace Cricket - Home</title>
   <style>
-
-    body{
-        background-color: #1A1F1E;
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .navbar{
-        background-color: #36454F;
-        padding: 15px 20px;
-        display: grid;
-        grid-template-columns: auto 1fr;
-        align-items: center;
-        gap: 20px;
-    }
-  
-    .navbar-brand {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .navbar img{
-        height: 60px;
-        width: 60px;
-    }
-
-    .navbar h1{
-        color: #FFFFFF;
-        margin: 0;
-        font-size: 24px;
-    }
-
-    .nav-links {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        gap: 20px;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .nav-links a{
-        color: black;
-        padding: 10px 20px;
-        text-decoration: none;
-    }
-
-    .nav-btn{
-        padding: 10px 20px;
-        border: 1px solid #1A1F1E;
-        border-radius: 12px;
-        color: black;
-        background-color: #C7F000;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 14px;
-    }
-
-    .nav-btn:hover {
-        background-color: #EBD5AB;
-        color: #1A1F1E;
-    }
-
-    .bg {
-        position: fixed;
-        inset: 0;
-        background: linear-gradient(-45deg, #FFFFFF, #1A1F1E, #1A1F1E, #FFFFFF);
-        background-size: 400% 400%;
-        animation: gradientMove 15s ease infinite;
-        z-index: -1;
-    }
-
-    @keyframes gradientMove {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-
-    .footer {
-        background-color: #36454F;
-        color: #ccc;
-        padding: 20px;
-        margin-top: 40px;
-    }
-
-    .footer-content {
-        text-align: center;
-    }
-
-    .footer p {
-        margin: 0;
-        font-size: 14px;
-    }
-
-    .intro{
-        padding: 40px 20px;
-        color: #FFFFFF;
-        font-family: Arial, Helvetica, sans-serif;
-        position: relative;
-        z-index: 1;
-    }
-
-    .intro h1{
-        color: #C7F000;
-        font-size: 32px;
-        margin-bottom: 20px;
-    }
-
-    .intro h3{
-        font-size: 18px;
-        line-height: 1.8;
-        font-weight: normal;
-    }
-
-    .news-ticker {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        align-items: center;
-        background: black;
-        color: whitesmoke;
-        overflow: hidden;
-        padding: 8px 15px;
-        opacity: 1;
-    }
-
-    .news-ticker .label {
-        background: #C7F000;
-        color: #111;
-        font-weight: bold;
-        padding: 4px 10px;
-        margin-right: 15px;
-        border-radius: 4px;
-        font-size: 12px;
-        white-space: nowrap;
-    }
-
-    .ticker-wrap {
-        overflow: hidden;
-    }
-
-    .ticker {
-        display: inline-block;
-        white-space: nowrap;
-        animation: scroll 65s linear infinite;
-        opacity: 1;
-    }
-
-    .ticker span {
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: bolder;
-        margin-right: 40px;
-        font-size: 16px;
-        opacity: 1;
-    }
-
-    @keyframes scroll {
-        0%   { transform: translateX(35%); }
-        100% { transform: translateX(-100%); }
-    }
-
-    /* MOBILE RESPONSIVE STYLES */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background-color: #0a0e0d; margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow-x: hidden; }
+    
+    .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden; pointer-events: none; }
+    .particle { position: absolute; width: 3px; height: 3px; background: #C7F000; border-radius: 50%; opacity: 0; animation: float 15s infinite ease-in-out; }
+    @keyframes float { 0%, 100% { transform: translateY(100vh) translateX(0) scale(0); opacity: 0; } 10% { opacity: 0.5; } 50% { opacity: 0.8; transform: translateY(50vh) translateX(100px) scale(1); } 90% { opacity: 0.3; } }
+    
+    .navbar { background: linear-gradient(135deg, #36454F 0%, #2a3439 100%); padding: 15px 40px; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 20px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(199, 240, 0, 0.2); animation: slideDown 0.8s ease-out; backdrop-filter: blur(10px); }
+    @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    
+    .navbar-brand { display: flex; align-items: center; gap: 15px; animation: fadeInLeft 1s ease-out 0.3s both; }
+    @keyframes fadeInLeft { from { transform: translateX(-50px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    
+    .navbar img { height: 60px; width: 60px; border-radius: 50%; border: 3px solid #C7F000; transition: transform 0.3s ease; box-shadow: 0 0 10px rgba(199, 240, 0, 0.5); animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { box-shadow: 0 0 10px rgba(199, 240, 0, 0.5); } 50% { box-shadow: 0 0 20px rgba(199, 240, 0, 0.9); } }
+    .navbar img:hover { transform: scale(1.1) rotate(360deg); transition: all 0.6s ease; }
+    
+    .navbar h1 { color: #FFFFFF; margin: 0; font-size: 28px; font-weight: 700; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); letter-spacing: 1px; }
+    .nav-links { display: flex; justify-content: flex-end; align-items: center; gap: 20px; list-style: none; margin: 0; padding: 0; }
+    .nav-links li { animation: fadeInRight 1s ease-out both; }
+    .nav-links li:nth-child(1) { animation-delay: 0.4s; }
+    .nav-links li:nth-child(2) { animation-delay: 0.5s; }
+    .nav-links li:nth-child(3) { animation-delay: 0.6s; }
+    @keyframes fadeInRight { from { transform: translateX(50px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    
+    .nav-btn { padding: 12px 24px; border: 2px solid #C7F000; border-radius: 30px; color: #1A1F1E; background: linear-gradient(135deg, #C7F000 0%, #a8cc00 100%); text-decoration: none; display: inline-block; font-size: 14px; font-weight: 600; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; }
+    .nav-btn::before { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; border-radius: 50%; background: rgba(255, 255, 255, 0.5); transform: translate(-50%, -50%); transition: width 0.6s, height 0.6s; }
+    .nav-btn:hover::before { width: 300px; height: 300px; }
+    .nav-btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 10px 25px rgba(199, 240, 0, 0.4); background: linear-gradient(135deg, #d4ff00 0%, #C7F000 100%); }
+    
+    .bg { position: fixed; inset: 0; background: linear-gradient(-45deg, #0a0e0d, #1A1F1E, #15211c, #0f1512); background-size: 400% 400%; animation: gradientMove 15s ease infinite; z-index: -2; }
+    @keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    
+    /* Next Match Card - NEW */
+    .next-match-container { max-width: 1200px; margin: 40px auto; padding: 0 40px; position: relative; z-index: 1; animation: fadeInUp 1s ease-out 0.5s both; }
+    .next-match-card { background: linear-gradient(135deg, rgba(199, 240, 0, 0.1) 0%, rgba(199, 240, 0, 0.05) 100%); border: 2px solid #C7F000; border-radius: 20px; padding: 30px; position: relative; overflow: hidden; animation: cardPulse 3s ease-in-out infinite; }
+    @keyframes cardPulse { 0%, 100% { box-shadow: 0 0 30px rgba(199, 240, 0, 0.3); } 50% { box-shadow: 0 0 50px rgba(199, 240, 0, 0.6); } }
+    
+    .next-match-card::before { content: ''; position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(199, 240, 0, 0.1) 0%, transparent 70%); animation: rotate 20s linear infinite; }
+    @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    
+    .match-label { color: #C7F000; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; animation: slideInLeft 0.8s ease-out; position: relative; z-index: 2; }
+    .match-teams { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; position: relative; z-index: 2; animation: zoomIn 0.8s ease-out 0.3s both; }
+    @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    
+    .team { text-align: center; flex: 1; }
+    .team-name { color: #FFFFFF; font-size: 28px; font-weight: 800; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); animation: glow 2s ease-in-out infinite; }
+    @keyframes glow { 0%, 100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), 0 0 10px rgba(199, 240, 0, 0.3); } 50% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), 0 0 20px rgba(199, 240, 0, 0.6); } }
+    
+    .vs { color: #C7F000; font-size: 20px; font-weight: 900; margin: 0 30px; animation: bounce 2s ease-in-out infinite; }
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    
+    .match-details { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; position: relative; z-index: 2; }
+    .detail-box { background: rgba(0, 0, 0, 0.3); padding: 15px; border-radius: 12px; text-align: center; border: 1px solid rgba(199, 240, 0, 0.3); transition: all 0.3s ease; animation: slideUp 0.8s ease-out both; }
+    .detail-box:nth-child(1) { animation-delay: 0.5s; }
+    .detail-box:nth-child(2) { animation-delay: 0.6s; }
+    .detail-box:nth-child(3) { animation-delay: 0.7s; }
+    @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    
+    .detail-box:hover { transform: translateY(-5px); border-color: #C7F000; background: rgba(199, 240, 0, 0.1); }
+    .detail-label { color: #999; font-size: 12px; text-transform: uppercase; margin-bottom: 5px; letter-spacing: 1px; }
+    .detail-value { color: #C7F000; font-size: 18px; font-weight: 700; }
+    
+    /* News Headlines Section - NEW */
+    .news-section { max-width: 1200px; margin: 60px auto; padding: 0 40px; position: relative; z-index: 1; }
+    .section-header { display: flex; align-items: center; gap: 15px; margin-bottom: 30px; animation: fadeInLeft 1s ease-out; }
+    .section-header h2 { color: #C7F000; font-size: 36px; font-weight: 800; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); }
+    .breaking-badge { background: #ff4444; color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: 700; animation: blink 1.5s ease-in-out infinite; }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    
+    .news-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+    .featured-news { background: linear-gradient(135deg, rgba(54, 69, 79, 0.95) 0%, rgba(42, 52, 57, 0.95) 100%); border-radius: 20px; padding: 30px; border: 2px solid rgba(199, 240, 0, 0.3); transition: all 0.5s ease; animation: slideInLeft 0.8s ease-out 0.3s both; position: relative; overflow: hidden; }
+    .featured-news::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(199, 240, 0, 0.2), transparent); transition: left 0.5s ease; }
+    .featured-news:hover::after { left: 100%; }
+    .featured-news:hover { transform: scale(1.02); border-color: #C7F000; box-shadow: 0 20px 50px rgba(199, 240, 0, 0.3); }
+    
+    .news-category { color: #C7F000; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+    .news-title { color: #FFFFFF; font-size: 28px; font-weight: 700; margin-bottom: 15px; line-height: 1.3; }
+    .news-excerpt { color: #ccc; font-size: 16px; line-height: 1.6; margin-bottom: 20px; }
+    .read-more { color: #C7F000; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; transition: gap 0.3s ease; }
+    .read-more:hover { gap: 10px; }
+    
+    .side-news { display: flex; flex-direction: column; gap: 15px; }
+    .news-item { background: linear-gradient(135deg, rgba(54, 69, 79, 0.8) 0%, rgba(42, 52, 57, 0.8) 100%); border-radius: 15px; padding: 20px; border: 1px solid rgba(199, 240, 0, 0.2); transition: all 0.3s ease; animation: fadeIn 0.8s ease-out both; cursor: pointer; }
+    .news-item:nth-child(1) { animation-delay: 0.4s; }
+    .news-item:nth-child(2) { animation-delay: 0.5s; }
+    .news-item:nth-child(3) { animation-delay: 0.6s; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+    
+    .news-item:hover { border-color: #C7F000; transform: translateX(-5px); background: linear-gradient(135deg, rgba(54, 69, 79, 1) 0%, rgba(42, 52, 57, 1) 100%); }
+    .news-item h3 { color: #FFFFFF; font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+    .news-meta { color: #999; font-size: 12px; }
+    
+    /* Stats Bar - NEW */
+    .stats-bar { background: linear-gradient(90deg, rgba(199, 240, 0, 0.1) 0%, rgba(199, 240, 0, 0.05) 50%, rgba(199, 240, 0, 0.1) 100%); padding: 30px 40px; margin: 60px 0; border-top: 2px solid rgba(199, 240, 0, 0.3); border-bottom: 2px solid rgba(199, 240, 0, 0.3); position: relative; z-index: 1; }
+    .stats-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+    .stat-item { text-align: center; animation: popIn 0.6s ease-out both; }
+    .stat-item:nth-child(1) { animation-delay: 0.2s; }
+    .stat-item:nth-child(2) { animation-delay: 0.3s; }
+    .stat-item:nth-child(3) { animation-delay: 0.4s; }
+    .stat-item:nth-child(4) { animation-delay: 0.5s; }
+    @keyframes popIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    
+    .stat-number { color: #C7F000; font-size: 48px; font-weight: 900; animation: countUp 2s ease-out; }
+    .stat-label { color: #FFFFFF; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-top: 10px; }
+    
+    .intro { padding: 80px 40px; color: #FFFFFF; position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; }
+    .intro h1 { color: #C7F000; font-size: 48px; margin-bottom: 40px; font-weight: 800; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); animation: titleGlow 3s ease-in-out infinite, fadeInUp 1.2s ease-out; letter-spacing: 2px; }
+    @keyframes titleGlow { 0%, 100% { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7), 0 0 20px rgba(199, 240, 0, 0.3); } 50% { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7), 0 0 40px rgba(199, 240, 0, 0.6); } }
+    @keyframes fadeInUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    
+    .intro h3 { font-size: 20px; line-height: 2; font-weight: 300; animation: fadeInUp 1.2s ease-out 0.3s both; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); }
+    .story-line { opacity: 0; transform: translateX(-30px); animation: slideInLeft 0.8s ease-out forwards; margin: 15px 0; padding-left: 20px; border-left: 3px solid transparent; transition: border-color 0.3s ease; }
+    .story-line:hover { border-left-color: #C7F000; }
+    .story-line:nth-child(1) { animation-delay: 0.5s; }
+    .story-line:nth-child(2) { animation-delay: 0.7s; }
+    .story-line:nth-child(3) { animation-delay: 0.9s; }
+    .story-line:nth-child(4) { animation-delay: 1.1s; }
+    .story-line:nth-child(5) { animation-delay: 1.3s; }
+    .story-line:nth-child(6) { animation-delay: 1.5s; }
+    .story-line:nth-child(7) { animation-delay: 1.7s; }
+    .story-line:nth-child(8) { animation-delay: 1.9s; }
+    @keyframes slideInLeft { to { opacity: 1; transform: translateX(0); } }
+    
+    .footer { background: linear-gradient(135deg, #36454F 0%, #2a3439 100%); color: #ccc; padding: 30px 20px; margin-top: 60px; border-top: 3px solid #C7F000; animation: slideUpFooter 1s ease-out; box-shadow: 0 -4px 20px rgba(199, 240, 0, 0.2); text-align: center; }
+    @keyframes slideUpFooter { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .footer p { margin: 0; font-size: 14px; font-weight: 500; letter-spacing: 1px; }
+    
+    .cricket-ball { position: fixed; width: 40px; height: 40px; background: radial-gradient(circle at 30% 30%, #ff6b6b, #c92a2a); border-radius: 50%; bottom: 100px; right: 50px; animation: floatBall 4s ease-in-out infinite; box-shadow: 0 0 20px rgba(255, 107, 107, 0.5); z-index: 10; }
+    @keyframes floatBall { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-30px) rotate(180deg); } }
+    
     @media screen and (max-width: 768px) {
-        .navbar {
-            grid-template-columns: 1fr;
-            gap: 15px;
-            padding: 15px;
-        }
-
-        .navbar-brand {
-            justify-content: center;
-        }
-
-        .navbar img {
-            height: 50px;
-            width: 50px;
-        }
-
-        .navbar h1 {
-            font-size: 20px;
-        }
-
-        .nav-links {
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .nav-btn {
-            padding: 8px 15px;
-            font-size: 13px;
-        }
-
-        .intro {
-            padding: 30px 15px;
-        }
-
-        .intro h1 {
-            font-size: 24px;
-        }
-
-        .intro h3 {
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        .news-ticker {
-            padding: 8px 10px;
-        }
-
-        .news-ticker .label {
-            font-size: 10px;
-            padding: 3px 8px;
-            margin-right: 10px;
-        }
-
-        .ticker span {
-            font-size: 14px;
-            margin-right: 30px;
-        }
-
-        .footer {
-            padding: 15px;
-        }
-
-        .footer p {
-            font-size: 12px;
-        }
+      .navbar { grid-template-columns: 1fr; gap: 15px; padding: 15px 20px; }
+      .navbar-brand { justify-content: center; }
+      .nav-links { justify-content: center; gap: 12px; flex-wrap: wrap; }
+      .next-match-container, .news-section { padding: 0 20px; }
+      .match-teams { flex-direction: column; gap: 20px; }
+      .vs { margin: 10px 0; }
+      .match-details { grid-template-columns: 1fr; }
+      .news-grid { grid-template-columns: 1fr; }
+      .stats-container { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .intro { padding: 50px 20px; }
+      .intro h1 { font-size: 32px; }
+      .section-header h2 { font-size: 28px; }
     }
-
-    /* EXTRA SMALL MOBILE */
-    @media screen and (max-width: 480px) {
-        .navbar h1 {
-            font-size: 18px;
-        }
-
-        .intro h1 {
-            font-size: 20px;
-        }
-
-        .intro h3 {
-            font-size: 14px;
-        }
-
-        .nav-links {
-            gap: 8px;
-        }
-
-        .nav-btn {
-            padding: 6px 12px;
-            font-size: 12px;
-        }
-
-        .ticker span {
-            font-size: 12px;
-        }
-    }
-
   </style>
 </head>
-
 <body>
-
-    <div class="navbar">
-        <div class="navbar-brand">
-            <img src="logo.png" alt="Peace 11 Logo">
-            <h1>Peace 11</h1>
-        </div>
-
-        <ul class="nav-links">
-            <li><a href="index.html" class="nav-btn">Home</a></li>
-            <li><a href="players.html" class="nav-btn">Players</a></li>
-            <li><a href="performance.html" class="nav-btn">Performance</a></li>
-        </ul>
+  <div class="particles" id="particles"></div>
+  
+  <div class="navbar">
+    <div class="navbar-brand">
+      <img src="logo.png" alt="Peace 11 Logo">
+      <h1>Peace 11</h1>
     </div>
-
-    <div class="news-ticker">
-        <span class="label">LATEST</span>
-        <div class="ticker-wrap">
-            <div class="ticker">
-                <span>January gets underway with Peace 11 unbeaten so far this season •</span>
-                <span>Manan remains a key focus as the campaign builds momentum •</span>
-                <span>The search continues for a dependable all-round option in the squad •</span>
-                <span>Opposition sides closely monitoring Mehran's swing with the new ball •</span>
-                <span>Zaid under the spotlight as expectations rise match by match •</span>
-                <span>Umar continuing to anchor innings with smart strike rotation •</span>
-                <span>Athar showing steady improvement with the bat in recent outings •</span>
-                <span>Questions raised over Aasim's A+ contract amid limited on-field appearances •</span>
-                <span>Iman's power-hitting expected to play a crucial role in tight situations •</span>
-            </div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-btn">Home</a></li>
+      <li><a href="players.html" class="nav-btn">Players</a></li>
+      <li><a href="performance.html" class="nav-btn">Performance</a></li>
+    </ul>
+  </div>
+  
+  <div class="bg"></div>
+  
+  <!-- Next Match Section -->
+  <div class="next-match-container">
+    <div class="next-match-card">
+      <div class="match-label">🏏 NEXT MATCH</div>
+      <div class="match-teams">
+        <div class="team">
+          <div class="team-name">PEACE 11</div>
         </div>
-    </div>
-
-    <div class="bg"></div>
-
-    <div class="intro">
-        <h1>Peace Ground. Holidays. No Mercy.</h1>
-        <h3>They play only on holidays.<br>
-            Their home is Peace Ground though peace was never guaranteed.<br><br>
-
-            When this team first stepped onto this ground, they lost more than matches.<br>
-            They lost tosses, confidence, momentum and sometimes the courage to check the scorecard.<br><br>
-
-            Captains changed.<br>
-            Strategies evolved.<br>
-            The jersey stayed the same.<br>
-            Results? Mostly unchanged.<br><br>
-
-            Peace Ground became known not for victories,<br>
-            but for heavy defeats served fresh every holiday.<br><br>
-
-            But something changed.<br><br>
-
-            Today, this team doesn't collapse it competes.<br>
-            It doesn't surrender it fights till the last over.<br>
-            And sometimes… it wins.<br><br>
-
-            No shortcuts.<br>
-            No change of ground.<br>
-            No waiting for luck.<br><br>
-
-            They simply learned how to survive Peace Ground.<br><br>
-
-            From losing everything<br>
-            to finally earning respect.<br><br>
-
-            That's not luck.<br>
-            That's progress.<br>
-        </h3>
-    </div>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <p>© 2026 Peace 11 • Peace Ground</p>
+        <div class="vs">VS</div>
+        <div class="team">
+          <div class="team-name">OLD CHANAPORA</div>
         </div>
-    </footer>
+      </div>
+      <div class="match-details">
+        <div class="detail-box">
+          <div class="detail-label">Date</div>
+          <div class="detail-value">January 10, 2026</div>
+        </div>
+        <div class="detail-box">
+          <div class="detail-label">Time</div>
+          <div class="detail-value">2:30 PM</div>
+        </div>
+        <div class="detail-box">
+          <div class="detail-label">Venue</div>
+          <div class="detail-value">Peace Ground</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+
+     <div class="next-match-container">
+    <div class="next-match-card">
+      <div class="match-label">🏏 NEXT MATCH</div>
+      <div class="match-teams">
+        <div class="team">
+          <div class="team-name">PEACE 11</div>
+        </div>
+        <div class="vs">VS</div>
+        <div class="team">
+          <div class="team-name">OLD CHANAPORA</div>
+        </div>
+      </div>
+      <div class="match-details">
+        <div class="detail-box">
+          <div class="detail-label">Date</div>
+          <div class="detail-value">January 11, 2026</div>
+        </div>
+        <div class="detail-box">
+          <div class="detail-label">Time</div>
+          <div class="detail-value">2:30 PM</div>
+        </div>
+        <div class="detail-box">
+          <div class="detail-label">Venue</div>
+          <div class="detail-value">Peace Ground</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="stats-container">
+      <div class="stat-item">
+        <div class="stat-number">30</div>
+        <div class="stat-label">Matches Played</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">2,387</div>
+        <div class="stat-label">Total Runs</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">7</div>
+        <div class="stat-label">Squad Members</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">31.07</div>
+        <div class="stat-label">Team Average</div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- News Headlines Section -->
+  <div class="news-section">
+    <div class="section-header">
+      <h2>Latest News</h2>
+      <span class="breaking-badge">BREAKING</span>
+    </div>
+    
+    <div class="news-grid">
+      <div class="featured-news">
+        <div class="news-category">TRANSFER MARKET</div>
+        <h2 class="news-title">All Eyes on Zaid: Will He Command the Highest Price in League Auction?</h2>
+        <p class="news-excerpt">With the league auction approaching, speculation is rife about Zaid Mir's potential price tag. Sources close to the board suggest multiple franchises are preparing aggressive bids for the opening batsman...</p>
+        <a href="#" class="read-more">Read Full Story →</a>
+      </div>
+      
+      <div class="side-news">
+        <div class="news-item">
+          <div class="news-category">CONTROVERSY</div>
+          <h3>Board Under Fire: Allegations of Corruption Surface</h3>
+          <div class="news-meta">2 hours ago • Exclusive</div>
+        </div>
+        
+        <div class="news-item">
+          <div class="news-category">PLAYER WATCH</div>
+          <h3>Aasim's A+ Contract Debate: Performance vs Potential</h3>
+          <div class="news-meta">5 hours ago • Analysis</div>
+        </div>
+        
+        <div class="news-item">
+          <div class="news-category">TACTICAL</div>
+          <h3>Mehran's Banana Swing: Opposition Teams Deploy Special Strategy</h3>
+          <div class="news-meta">1 day ago • Match Preview</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="intro">
+    <h1>Peace Ground. Holidays. No Mercy.</h1>
+    <h3>
+      <div class="story-line">They play only on holidays.</div>
+      <div class="story-line">Their home is Peace Ground though peace was never guaranteed.</div>
+      <br>
+      <div class="story-line">When this team first stepped onto this ground, they lost more than matches.</div>
+      <div class="story-line">They lost tosses, confidence, momentum and sometimes the courage to check the scorecard.</div>
+      <br>
+      <div class="story-line">Captains changed. Strategies evolved. The jersey stayed the same. Results? Mostly unchanged.</div>
+      <br>
+      <div class="story-line">Peace Ground became known not for victories, but for heavy defeats served fresh every holiday.</div>
+      <br>
+      <div class="story-line">But something changed.</div>
+      <br>
+      <div class="story-line">Today, this team doesn't collapse it competes. It doesn't surrender it fights till the last over. And sometimes… it wins.</div>
+      <br>
+      <div class="story-line">No shortcuts. No change of ground. No waiting for luck.</div>
+      <br>
+      <div class="story-line">They simply learned how to survive Peace Ground.</div>
+      <br>
+      <div class="story-line">From losing everything to finally earning respect.</div>
+      <br>
+      <div class="story-line">That's not luck. That's progress.</div>
+    </h3>
+  </div>
+  
+  <div class="cricket-ball"></div>
+  
+  <footer class="footer">
+    <div class="footer-content">
+      <p>© 2026 Peace 11 • Peace Ground</p>
+    </div>
+  </footer>
+  
+  <script>
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 15 + 's';
+      particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+      particlesContainer.appendChild(particle);
+    }
+  </script>
 </body>
 </html>
